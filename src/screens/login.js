@@ -17,43 +17,63 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Login = ({navigation})  => {
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
+    <SafeAreaView style={{flex: 1, justifyContent: 'center',backgroundColor: '#0a1d60',}}>
       <View style={{paddingHorizontal: 25}}>
        
         <Text
           style={{
             fontSize: 28,
-            fontWeight: '600',
-            color: '#333',
+            fontWeight: '500',
+            color: '#fff',
             marginBottom: 30,
           }}>
-          Login
+          Iniciar sesion
         </Text>
-        
+        <Text
+        style={{
+            fontSize: 14,
+            fontWeight: '400',
+            color: '#fff',
+            marginBottom: 5,
+          }}>
+         Correo electronico
+        </Text>
         <InputField
-          label={'Email ID'}
+        
+          
           icon={
             <MaterialIcons
             name="alternate-email"
             size={20}
-            color="#666"
+            color="#fff"
             style={{marginRight: 5}}
           />
           }
+         
           keyboardType="email-address"
+          
         />
+         <Text
+        style={{
+            fontSize: 14,
+            fontWeight: '400',
+            color: '#fff',
+            marginBottom: 5,
+          }}>
+          Contraseña
+        </Text>
         <InputField
-          label={'Password'}
+          
           icon={
             <Ionicons
             name="ios-lock-closed-outline"
             size={20}
-            color="#666"
+            color="#fff"
             style={{marginRight: 5}}
           />
           }
           inputType="password"
-          fieldButtonLabel={"Forgot?"}
+          fieldButtonLabel={"Olvidaste?"}
           fieldButtonFunction={() => {}}
         />
         
@@ -63,11 +83,14 @@ const Login = ({navigation})  => {
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            marginBottom: 30
+            marginBottom: 30,
           }}>
-          <Text>¿Eres Nuevo?</Text>
+          <Text
+          style={{
+            color: '#fff'
+          }}>¿Eres Nuevo?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Registrar')}>
-            <Text style={{color: '#AD40AF', fontWeight: '700'}}> Registrate</Text>
+            <Text style={{color: 'orange', fontWeight: '700'}}> Registrate</Text>
           </TouchableOpacity>
         </View>
       </View>

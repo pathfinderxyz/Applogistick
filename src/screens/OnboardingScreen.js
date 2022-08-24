@@ -1,27 +1,19 @@
 import React from 'react'
-import { SafeAreaView, View, Text,Image, TouchableOpacity } from 'react-native';
+import { SafeAreaView,StyleSheet, View, Text,Image, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Favicon from './../assets/img/control.png';
+import Favicon from './../assets/img/logo.png';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Onboarding = ({ navigation }) => {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-      }}>
-      <View style={{ marginTop: 20 }}>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 30,
-            color: '#20315f',
-          }}>
-          SUPERPLAY
-        </Text>
-      </View>
+    <View style={styles.container}>
+    <LinearGradient
+        // Background Linear Gradient
+      
+        colors={['#0a1d60', 'transparent']}
+        style={styles.background}
+      />
+      
       <View>
         <Image
           source={Favicon}
@@ -30,8 +22,9 @@ const Onboarding = ({ navigation }) => {
       </View>
       <TouchableOpacity
         style={{
-          backgroundColor: '#AD40AF',
+          backgroundColor: '#060f32',
           padding: 20,
+          marginTop: 20,
           width: '90%',
           borderRadius: 10,
           marginBottom: 50,
@@ -50,8 +43,23 @@ const Onboarding = ({ navigation }) => {
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#0a1d60',
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 500,
+  }
+});
 
 export default Onboarding;
