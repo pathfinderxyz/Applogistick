@@ -11,24 +11,40 @@ import SeleccionarRegistro from '../screens/seleccionarregistro';
 import RegistrarDos from '../screens/registrardos';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tabs from './tabs';
+import Detalless from '../screens/detalles2';
 
 const Stack = createNativeStackNavigator();
 
 const Start= () => {
   return (
-    <Stack.Navigator  screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Splash" component={Splash}/>
-      <Stack.Screen name="Onboarding" component={Onboarding}/>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="SeleccionarRegistro" component={SeleccionarRegistro} />
-      <Stack.Screen name="Home" component={MyDrawer}/>
-      <Stack.Screen name="Registrar" component={Registrar}/>
-      <Stack.Screen name="RegistrarDos" component={RegistrarDos}/>
+    <Stack.Navigator>
+      <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
+      <Stack.Screen name="Onboarding" component={Onboarding} options={{headerShown: false}}/>
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="SeleccionarRegistro" component={SeleccionarRegistro} options={{headerShown: false}} />
+      <Stack.Screen name="Home" component={MyDrawer} options={{headerShown: false}}/>
+      <Stack.Screen name="Registrar" component={Registrar} options={{headerShown: false}}/>
+      <Stack.Screen name="RegistrarDos" component={RegistrarDos} options={{headerShown: false}}/>
       <Stack.Screen name="Detalles" component={GameDetailsScreen} 
       options={
         ({ route, navigation }) => ({
         title: route.params?.title,
         headerShown: true,
+        headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+      })
+      }/>
+      <Stack.Screen name="Detalless" component={Detalless} 
+      options={
+        ({ route, navigation }) => ({
+        title: route.params?.title,
+        headerShown: true,
+        headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
       })
       }/>
       

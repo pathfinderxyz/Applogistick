@@ -23,11 +23,10 @@ const Home = ({navigation}) => {
         colors={['#0a1d60', 'transparent']}
         style={styles.background}
       />
-      <ScrollView>
-      <View
+       <View
           style={{
             flexDirection: 'row',
-            marginBottom: 20,
+            marginBottom: 10,
             marginTop:38
           }}>
            <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -47,7 +46,23 @@ const Home = ({navigation}) => {
           </Text>
           
         </View>
-
+      <ScrollView>
+     
+         <Text style={{
+            fontSize: 22,
+            color:'#fff',
+            padding:14,
+            }}>
+            Servicios disponibles
+          </Text>
+          <Text style={{
+            fontSize: 15,
+            color:'#fff',
+            marginLeft:14,
+            marginBottom:20,
+            }}>
+            Encuentre el servicio que desee
+          </Text>
         
         {gamesTab == 1 &&
           freeGames.map(item => (

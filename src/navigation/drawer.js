@@ -11,6 +11,9 @@ import Metodos from './../screens/metodos';
 import Login from './../screens/login';
 import Tabs from './tabs';
 import CustomDrawer from './../componentes/CustomDrawer';
+import Home from '../screens/home';
+import Chat from '../screens/chat';
+import Soporte from '../screens/soporte';
 
 
 const Drawer = createDrawerNavigator();
@@ -21,7 +24,8 @@ function MyDrawer() {
       useLegacyImplementation
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
-        drawerActiveBackgroundColor: '#aa18ea',
+        headerShown: false,
+        drawerActiveBackgroundColor: '#0a1d60',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
         drawerLabelStyle: {
@@ -34,28 +38,53 @@ function MyDrawer() {
         component={Tabs}
         options={{
           drawerIcon: ({ color }) => (
-            <Ionicons name="home" size={22} color={color} />
+            <Ionicons name="home-outline" size={22} color={color} />
           ),
         }} />
       <Drawer.Screen
-        name="Movies"
-        component={Movies}
+        name="Planes de membresia"
+        component={Metodos}
         options={{
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+          headerShown: true,
+          drawerIcon: ({ color }) => (
+            <Ionicons name="rocket-outline" size={22} color={color} />
+          ),
+        }} />
+         <Drawer.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+          headerShown: true,
           drawerIcon: ({ color }) => (
             <Ionicons name="chatbox-ellipses-outline" size={22} color={color} />
           ),
         }} />
-      <Drawer.Screen
-        name="Metodos"
-        component={Metodos}
+        <Drawer.Screen
+        name="Soporte"
+        component={Soporte}
         options={{
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+          headerShown: true,
           drawerIcon: ({ color }) => (
-            <Ionicons name="timer-outline" size={22} color={color} />
+            <Ionicons name="people-outline" size={22} color={color} />
           ),
         }} />
+       
       <Drawer.Screen name="Salir"
         component={Login}
         options={{
+          
           headerShown: false,
           drawerIcon: ({ color }) => (
             <Ionicons name="exit-outline" size={22} color={color} />

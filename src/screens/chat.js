@@ -7,14 +7,12 @@ const NavigatetoHome = props => {
     props.navigation.navigate('Home');
 }
 
-const Config = props => {
+const Chat = props => {
   return (
- 
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>No tienes servicios activos</Text>
+    <Text>No hay mensajes recientes</Text>
      
     </View>
-  
   );
 }
-export default Config;
+export default Chat;

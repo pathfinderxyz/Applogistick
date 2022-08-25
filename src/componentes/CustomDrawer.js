@@ -19,9 +19,9 @@ const CustomDrawer = props => {
     <View style={{flex: 1}}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{backgroundColor: '#8200d6'}}>
+        contentContainerStyle={{backgroundColor: '#221778'}}>
         <ImageBackground
-          source={require('./../assets/img/menu-bg.jpeg')}
+          source={require('./../assets/img/menu-bg.jpg')}
           style={{padding: 20}}>
           <Image
             source={require('./../assets/img/user-profile.jpg')}
@@ -33,7 +33,7 @@ const CustomDrawer = props => {
               fontSize: 18,
               marginBottom: 5,
             }}>
-            John Doe
+            Jose M Carvajal
           </Text>
           <View style={{flexDirection: 'row'}}>
             <Text
@@ -41,9 +41,9 @@ const CustomDrawer = props => {
                 color: '#fff',
                 marginRight: 5,
               }}>
-              280 Coins
+             Membresia: Free
             </Text>
-            <FontAwesome5 name="coins" size={14} color="#fff" />
+            
           </View>
         </ImageBackground>
         <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
