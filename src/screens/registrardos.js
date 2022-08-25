@@ -22,7 +22,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-const Registrar = ({navigation}) => {
+const RegistrarDos = ({navigation}) => {
 
   return (
     
@@ -43,7 +43,7 @@ const Registrar = ({navigation}) => {
             color: '#fff',
             marginBottom: 30,
           }}>
-          Cliente
+          Transportista
         </Text>
         <Text
         style={{
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
     height: 500,
   }
 });
-export default Registrar;
+export default RegistrarDos;

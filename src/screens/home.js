@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, ImageBackground, TextInput, TouchableOpacity, } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, ImageBackground, TextInput,StyleSheet, TouchableOpacity, } from 'react-native';
 import CustomSwitch from './../componentes/CustomSwitch';
 import ListItem from './../componentes/ListItem';
 import { freeGames, paidGames, promo, sliderData } from './../model/data';
-import BannerSlider from '../componentes/BannerSlider';
-import CarouselCards from './../componentes/CaroulseCards';
+import { LinearGradient } from 'expo-linear-gradient';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 /* const NavigatetoDetails = props => {
@@ -14,24 +14,41 @@ import CarouselCards from './../componentes/CaroulseCards';
 const Home = ({navigation}) => {
   const [gamesTab, setGamesTab] = useState(1);
 
-  const onSelectSwitch = value => {
-    setGamesTab(value);
-  };
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+    <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+      
+        colors={['#0a1d60', 'transparent']}
+        style={styles.background}
+      />
       <ScrollView>
-        <View style={{ marginVertical: 20 }}>
-          <CustomSwitch
-            selectionMode={1}
-            option1="Free to play"
-            option2="Paid games"
-            option3="Promocion"
-            onSelectSwitch={onSelectSwitch}
-          />
+      <View
+          style={{
+            flexDirection: 'row',
+            marginBottom: 20,
+            marginTop:38
+          }}>
+           <TouchableOpacity onPress={() => navigation.openDrawer()}>
+           <Ionicons
+              name="menu"
+              size={27}
+              color="#fff"
+              style={{padding: 14}}
+            />
+          </TouchableOpacity>
+          <Text style={{
+            fontSize: 19,
+            color:'#fff',
+            padding:14,
+            }}>
+            Inicio
+          </Text>
+          
         </View>
 
-        <CarouselCards />
-
+        
         {gamesTab == 1 &&
           freeGames.map(item => (
             <ListItem
@@ -50,43 +67,25 @@ const Home = ({navigation}) => {
             />
 
           ))}
-        {gamesTab == 2 &&
-          paidGames.map(item => (
-            <ListItem
-              key={item.id}
-              photo={item.poster}
-              title={item.title}
-              subTitle={item.subtitle}
-              isFree={item.isFree}
-              price={item.price}
-              onPress={() =>
-                navigation.navigate('GameDetails', {
-                  title: item.title,
-                  id: item.id,
-                })
-              }
-            />
-          ))}
-        {gamesTab == 3 &&
-          promo.map(item => (
-            <ListItem
-              key={item.id}
-              photo={item.poster}
-              title={item.title}
-              subTitle={item.subtitle}
-              isFree={item.isFree}
-              price={item.price}
-              onPress={() =>
-                navigation.navigate('GameDetails', {
-                  title: item.title,
-                  id: item.id,
-                })
-              }
-            />
-          ))}
+      
+       
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#07092c'
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 500,
+  }
+});
 
 export default Home;

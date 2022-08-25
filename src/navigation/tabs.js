@@ -19,23 +19,26 @@ function Tabs() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarStyle: {backgroundColor: '#07092d',borderTopColor:'#07092c'},
+        tabBarInactiveTintColor: '#fff',
+        tabBarActiveTintColor: '#fff'
       }}>
       <Tab.Screen name="Home" component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" color={color} size={size} />
+            <Ionicons name="home-outline" color={color} size={24} />
           ),
         }} />
       <Tab.Screen name="Movies" component={Movies}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="heart-outline" color={color} size={size} />
+            <Ionicons name="heart-outline" color={color} size={24} />
           ),
         }} />
       <Tab.Screen name="Config" component={Config}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" color={color} size={size} />
+            <Ionicons name="settings" color={color} size={24} />
           ),
           
         }} />

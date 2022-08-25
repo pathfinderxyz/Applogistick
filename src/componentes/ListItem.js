@@ -7,6 +7,7 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
     <View style={{
       flexDirection:'row',
       justifyContent: 'space-between',
+      marginTop: 4,
       alignItems: 'center',
       marginBottom: 20,
       marginHorizontal: 25,

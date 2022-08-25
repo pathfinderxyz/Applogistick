@@ -4,12 +4,14 @@ import {
   View,
   Text,
   TextInput,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import CustomButton from './../componentes/CustomButton';
 import InputField from './../componentes/InputField';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 /* const NavigatetoHome = props => {
   props.navigation.navigate('Home');
@@ -17,9 +19,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Login = ({navigation})  => {
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center',backgroundColor: '#0a1d60',}}>
-      <View style={{paddingHorizontal: 25}}>
-       
+    
+      <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+      
+        colors={['#0a1d60', 'transparent']}
+        style={styles.background}
+      />
         <Text
           style={{
             fontSize: 28,
@@ -89,13 +96,27 @@ const Login = ({navigation})  => {
           style={{
             color: '#fff'
           }}>¿Eres Nuevo?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Registrar')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SeleccionarRegistro')}>
             <Text style={{color: 'orange', fontWeight: '700'}}> Registrate</Text>
           </TouchableOpacity>
         </View>
+     
       </View>
-    </SafeAreaView>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#07092c',
+    paddingHorizontal:25,
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 500,
+  }
+});
 export default Login;
