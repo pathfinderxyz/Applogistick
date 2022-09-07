@@ -14,6 +14,7 @@ import CustomDrawer from './../componentes/CustomDrawer';
 import Home from '../screens/home';
 import Chat from '../screens/chat';
 import Soporte from '../screens/soporte';
+import CrearAnuncio from '../screens/crearanuncio';
 
 
 const Drawer = createDrawerNavigator();
@@ -52,6 +53,19 @@ function MyDrawer() {
           headerShown: true,
           drawerIcon: ({ color }) => (
             <Ionicons name="rocket-outline" size={22} color={color} />
+          ),
+        }} />
+          <Drawer.Screen
+        name="Crear Anuncio"
+        component={CrearAnuncio}
+        options={{
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+          headerShown: true,
+          drawerIcon: ({ color }) => (
+            <Ionicons name="add-outline" size={22} color={color} />
           ),
         }} />
          <Drawer.Screen

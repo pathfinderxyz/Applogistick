@@ -20,9 +20,20 @@ import CustomButton from './../componentes/CustomButton';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
+import SelectList from "react-native-dropdown-select-list";
 
 
 const RegistrarDos = ({navigation}) => {
+  const [selected, setSelected] = React.useState("");
+
+  const data = [
+    { key: "1", value: "Colombia" },
+    { key: "2", value: "Venezuela" },
+    { key: "3", value: "Brasil" },
+    { key: "4", value: "Peru" },
+    { key: "5", value: "Mexico" },
+    { key: "6", value: "Argentina" },
+  ];
 
   return (
     
@@ -85,6 +96,32 @@ const RegistrarDos = ({navigation}) => {
           }
           keyboardType="email-address"
         />
+         <Text
+        style={{
+          fontSize: 14,
+          fontWeight: "400",
+          color: "#fff",
+          marginBottom: 5,
+        }}
+      >
+        País
+      </Text>
+     
+      <SelectList
+    
+        setSelected={setSelected}
+        data={data}
+        searchPlaceholder="Seleccione"
+        arrowicon={
+          <Ionicons  name="chevron-down" size={20} color={"#fff"} />
+        }
+        searchicon={<Ionicons  name="ios-lock-closed-outline" size={20} color={"#fff"} />}
+        search={false}
+        boxStyles={{ borderRadius:0,borderTop:0,borderLeft:0,borderRight:0,borderColor: '#fff',marginBottom:15 }} //override default styles
+        inputStyles={{color:"#fff" }}
+        dropdownTextStyles={{color:"#fff" }}
+        defaultOption={{ key: "0", value: "Seleccione un pais" }} //default selected option
+      />
          <Text
         style={{
             fontSize: 14,

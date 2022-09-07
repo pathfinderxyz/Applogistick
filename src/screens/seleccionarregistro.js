@@ -65,7 +65,7 @@ const SeleccionarRegistro = ({ navigation }) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-          Transportista
+          Logialiados
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
       </TouchableOpacity>
