@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "APP3",
-    "slug": "APP3",
+    "name": "Logistick",
+    "slug": "logistick",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Aplicacion de logistick",
+    "githubUrl": "https://github.com/pathfinderxyz/Applogistick.git"
   }
 }
