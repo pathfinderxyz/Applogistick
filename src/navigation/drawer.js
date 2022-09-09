@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import React, {useContext,useState} from 'react';
 import { View, Text, Settings } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -16,10 +17,12 @@ import Soporte from '../screens/soporte';
 import CrearAnuncio from '../screens/crearanuncio';
 
 
+
+
 const Drawer = createDrawerNavigator();
 
 const MyDrawer = () =>{
-
+  
   return (
     <Drawer.Navigator
       useLegacyImplementation
@@ -42,6 +45,7 @@ const MyDrawer = () =>{
             <Ionicons name="home-outline" size={22} color={color} />
           ),
         }} />
+        
       <Drawer.Screen
         name="Planes de membresia"
         component={Metodos}
@@ -55,6 +59,7 @@ const MyDrawer = () =>{
             <Ionicons name="rocket-outline" size={22} color={color} />
           ),
         }} />
+       
           <Drawer.Screen
         name="Crear Anuncio"
         component={CrearAnuncio}
@@ -94,18 +99,9 @@ const MyDrawer = () =>{
             <Ionicons name="people-outline" size={22} color={color} />
           ),
         }} />
-       
-      <Drawer.Screen name="Salir"
-        component={Login}
-        options={{
-          
-          headerShown: false,
-          drawerIcon: ({ color }) => (
-            <Ionicons name="exit-outline" size={22} color={color} />
-          ),
-        }} />
 
     </Drawer.Navigator>
+     
 
   );
 }

@@ -11,25 +11,31 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
+    const [errorglobal, setErrorGlobal] = useState(false);
 
     const LoginAuth = (email,password) => {
         setIsLoading(true);
         axios.post(url,{email,password}).then(res => {
+            
+            if(res.data[0].conectado){
+                setUserInfo(res.data);
+                setUserToken(res.data[0].token);
     
-            setUserInfo(res.data);
-            setUserToken(res.data[0].token);
-
-            AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
-            AsyncStorage.setItem('userToken', JSON.stringify(userToken));
-
-            console.log(userInfo);
-            console.log(userToken);
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+                AsyncStorage.setItem('userToken', JSON.stringify(userToken));
+            }else{
+                setErrorGlobal(true);
+            }
+          
         }).catch((err) => {
             console.log(err);
         })
        
         setIsLoading(false);
     }
+
+    console.log(userInfo);
+    console.log(userToken);
 
     const Logout = () => {
         setIsLoading(true);
@@ -62,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ LoginAuth, Logout, isLoading, userToken ,userInfo}}>
+        <AuthContext.Provider value={{ LoginAuth, Logout, isLoading, userToken ,userInfo,errorglobal}}>
             {children}
         </AuthContext.Provider>
     );

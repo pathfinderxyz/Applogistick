@@ -23,6 +23,17 @@ const Login = ({navigation})  => {
   const [email,setEmail] = useState(null);
   const [password,setPassword] = useState(null);
   const {LoginAuth}= useContext(AuthContext);
+  const {errorglobal}= useContext(AuthContext);
+
+  const [Error, setError] = useState(false);
+
+  const validardatos = () => {
+    if (email !== null && password !== null) {
+      LoginAuth(email,password);
+    } else {
+      setError(true);
+    }
+  };
 
   return (
     
@@ -42,6 +53,31 @@ const Login = ({navigation})  => {
           }}>
           Iniciar sesion
         </Text>
+        {Error && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "500",
+            color: "#f8e44b",
+            marginBottom: 30,
+          }}
+        >
+          ¡Error, campos vacios!
+        </Text>
+      )}
+
+      {errorglobal && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "500",
+            color: "#f8e44b",
+            marginBottom: 30,
+          }}
+        >
+          ¡Error, los datos de usuario son incorrectos!
+        </Text>
+      )}
 
         <Text
         style={{
@@ -91,9 +127,7 @@ const Login = ({navigation})  => {
           onChangeText={text => setPassword(text)}
         />
         
-        <CustomButton label={"Entrar"} onPress={() => {
-          LoginAuth(email,password);
-          }} />
+        <CustomButton label={"Entrar"} onPress={validardatos} />
 
         <View
           style={{

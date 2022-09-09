@@ -20,18 +20,48 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import SelectList from "react-native-dropdown-select-list";
+import axios from "axios";
+
+const url = "https://apilogistick.iawork.tk/public/usuarios";
 
 const Registrar = ({ navigation }) => {
   const [selected, setSelected] = React.useState("");
+  const [nombre, setNombre] = useState(null);
+  const [correo, setCorreo] = useState(null);
+  const [pais, setPais] = useState(null);
+  const [pass, setPass] = useState(null);
+  const rol = "cliente";
 
   const data = [
-    { key: "1", value: "Colombia" },
-    { key: "2", value: "Venezuela" },
-    { key: "3", value: "Brasil" },
-    { key: "4", value: "Peru" },
-    { key: "5", value: "Mexico" },
-    { key: "6", value: "Argentina" },
+    { key: "Colombia", value: "Colombia" },
+    { key: "Venezuela", value: "Venezuela" },
+    { key: "Brasil", value: "Brasil" },
+    { key: "Peru", value: "Peru" },
+    { key: "Mexico", value: "Mexico" },
+    { key: "Argentina", value: "Argentina" },
   ];
+
+  const [Error, setError] = useState(false);
+
+  const validardatos = () => {
+    if (nombre !== null && correo !== null &&  selected !== null && pass !== null ) {
+      RegistrarCliente();
+    } else {
+      setError(true);
+    }
+  };
+
+  const RegistrarCliente = () => {
+    axios
+      .post(url, { nombre, correo, selected, pass, rol })
+      .then((res) => {
+        console.log(res.data);
+        navigation.navigate("GraciasRegistrar");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <View showsVerticalScrollIndicator={false} style={styles.container}>
@@ -52,6 +82,18 @@ const Registrar = ({ navigation }) => {
       >
         Cliente
       </Text>
+      {Error && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "500",
+            color: "#f8e44b",
+            marginBottom: 30,
+          }}
+        >
+          ¡Error, por favor rellene todos los campos!
+        </Text>
+      )}
       <Text
         style={{
           fontSize: 14,
@@ -72,6 +114,8 @@ const Registrar = ({ navigation }) => {
             style={{ marginRight: 5 }}
           />
         }
+        value={nombre}
+        onChangeText={(text) => setNombre(text)}
       />
       <Text
         style={{
@@ -93,6 +137,8 @@ const Registrar = ({ navigation }) => {
           />
         }
         keyboardType="email-address"
+        value={correo}
+        onChangeText={(text) => setCorreo(text)}
       />
       <Text
         style={{
@@ -104,20 +150,26 @@ const Registrar = ({ navigation }) => {
       >
         País
       </Text>
-     
+
       <SelectList
-    
         setSelected={setSelected}
         data={data}
         searchPlaceholder="Seleccione"
-        arrowicon={
-          <Ionicons  name="chevron-down" size={20} color={"#fff"} />
+        arrowicon={<Ionicons name="chevron-down" size={20} color={"#fff"} />}
+        searchicon={
+          <Ionicons name="ios-lock-closed-outline" size={20} color={"#fff"} />
         }
-        searchicon={<Ionicons  name="ios-lock-closed-outline" size={20} color={"#fff"} />}
         search={false}
-        boxStyles={{ borderRadius:0,borderTop:0,borderLeft:0,borderRight:0,borderColor: '#fff',marginBottom:15 }} //override default styles
-        inputStyles={{color:"#fff" }}
-        dropdownTextStyles={{color:"#fff" }}
+        boxStyles={{
+          borderRadius: 0,
+          borderTop: 0,
+          borderLeft: 0,
+          borderRight: 0,
+          borderColor: "#fff",
+          marginBottom: 15,
+        }} //override default styles
+        inputStyles={{ color: "#fff" }}
+        dropdownTextStyles={{ color: "#fff" }}
         defaultOption={{ key: "0", value: "Seleccione un pais" }} //default selected option
       />
 
@@ -141,6 +193,8 @@ const Registrar = ({ navigation }) => {
           />
         }
         inputType="password"
+        value={pass}
+        onChangeText={(text) => setPass(text)}
       />
       <Text
         style={{
@@ -163,10 +217,7 @@ const Registrar = ({ navigation }) => {
         }
         inputType="password"
       />
-      <CustomButton
-        label={"Registrar"}
-        onPress={() => navigation.navigate("Home")}
-      />
+      <CustomButton label={"Registrar"} onPress={validardatos} />
 
       <View
         style={{

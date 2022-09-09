@@ -12,6 +12,7 @@ import RegistrarDos from '../screens/registrardos';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tabs from './tabs';
 import Detalless from '../screens/detalles2';
+import GraciasRegistrar from '../screens/GraciasRegistrar';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ const Start= () => {
       <Stack.Screen name="SeleccionarRegistro" component={SeleccionarRegistro} options={{headerShown: false}} />
       <Stack.Screen name="Registrar" component={Registrar} options={{headerShown: false}}/>
       <Stack.Screen name="RegistrarDos" component={RegistrarDos} options={{headerShown: false}}/>
+      <Stack.Screen name="GraciasRegistrar" component={GraciasRegistrar} options={{headerShown: false}}/>
     </Stack.Navigator>
   );
 };

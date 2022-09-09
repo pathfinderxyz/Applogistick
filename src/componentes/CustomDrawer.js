@@ -18,6 +18,7 @@ import { AuthContext } from '../context/AuthContext';
 const CustomDrawer = props => {
 
   const {userInfo}= useContext(AuthContext);
+  const {Logout}= useContext(AuthContext);
 
   return (
     <View style={{flex: 1}}>
@@ -34,10 +35,11 @@ const CustomDrawer = props => {
           <Text
             style={{
               color: '#fff',
-              fontSize: 18,
+              fontSize: 14,
               marginBottom: 5,
             }}>
-            {userInfo[0].username}
+
+            {userInfo[0].nombre}
           </Text>
           <View style={{flexDirection: 'row'}}>
             <Text
@@ -50,10 +52,26 @@ const CustomDrawer = props => {
             
           </View>
         </ImageBackground>
-        <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
+        <View style={{flex: 1, backgroundColor: '#fff',paddingTop: 10}}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
+      <View style={{padding: 20, borderTopWidth: 1, borderTopColor: '#ccc'}}>
+        
+        <TouchableOpacity onPress={() => {Logout()}} style={{paddingVertical: 15}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Ionicons name="exit-outline" size={22} />
+            <Text
+              style={{
+                fontSize: 15,
+                marginLeft: 5,
+                colo:'#333',
+              }}>
+              Salir
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

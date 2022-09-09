@@ -10,7 +10,7 @@ import Start2 from './start2';
 
 const AppNav = () => {
    
-    const{isLoading,userToken}= useContext(AuthContext);
+    const{isLoading,userToken,userInfo}= useContext(AuthContext);
 
     if(isLoading){
         return(
@@ -19,10 +19,10 @@ const AppNav = () => {
           </View>
         ); 
     }
-  console.log('Valor de toke', userToken);
+  console.log('Valor de token', userToken);
   return (
     <NavigationContainer>
-        {userToken !== null ? <MyDrawer/> : <Start/>  }
+        {userToken == null || userToken == undefined ? <Start/>: <MyDrawer/> }
     </NavigationContainer>
   );
 }

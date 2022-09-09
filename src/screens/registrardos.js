@@ -21,19 +21,48 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
 import SelectList from "react-native-dropdown-select-list";
+import axios from 'axios';
 
+const url = "https://apilogistick.iawork.tk/public/usuarios";
 
 const RegistrarDos = ({navigation}) => {
   const [selected, setSelected] = React.useState("");
 
+  const [nombre,setNombre] = useState(null);
+  const [correo,setCorreo] = useState(null);
+  const [pais,setPais] = useState(null);
+  const [pass,setPass] = useState(null);
+  const rol ='logialiado'
+
   const data = [
-    { key: "1", value: "Colombia" },
-    { key: "2", value: "Venezuela" },
-    { key: "3", value: "Brasil" },
-    { key: "4", value: "Peru" },
-    { key: "5", value: "Mexico" },
-    { key: "6", value: "Argentina" },
+    { key: "Colombia", value: "Colombia" },
+    { key: "Venezuela", value: "Venezuela" },
+    { key: "Brasil", value: "Brasil" },
+    { key: "Peru", value: "Peru" },
+    { key: "Mexico", value: "Mexico" },
+    { key: "Argentina", value: "Argentina" },
   ];
+
+  const [Error, setError] = useState(false);
+
+  const validardatos = () => {
+    if (nombre !== null && correo !== null &&  selected !== null && pass !== null ) {
+      RegistrarCliente();
+    } else {
+      setError(true);
+    }
+  };
+
+  const RegistrarCliente = () =>{
+    axios.post(url,{nombre,correo,selected,pass,rol}).then(res => {
+      console.log(res.data);
+      navigation.navigate('GraciasRegistrar');
+    })
+      .catch((err) => {
+        console.log(err);
+    })   
+}
+
 
   return (
     
@@ -54,8 +83,20 @@ const RegistrarDos = ({navigation}) => {
             color: '#fff',
             marginBottom: 30,
           }}>
-          Transportista
+          Logialiado
         </Text>
+        {Error && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "500",
+            color: "#f8e44b",
+            marginBottom: 30,
+          }}
+        >
+          ¡Error, por favor rellene todos los campos!
+        </Text>
+      )}
         <Text
         style={{
             fontSize: 14,
@@ -75,6 +116,8 @@ const RegistrarDos = ({navigation}) => {
               style={{marginRight: 5}}
             />
           }
+          value={nombre}
+        onChangeText={text => setNombre(text)}
         />
         <Text
         style={{
@@ -95,6 +138,8 @@ const RegistrarDos = ({navigation}) => {
             />
           }
           keyboardType="email-address"
+          value={correo}
+        onChangeText={text => setCorreo(text)}
         />
          <Text
         style={{
@@ -141,6 +186,8 @@ const RegistrarDos = ({navigation}) => {
             />
           }
           inputType="password"
+          value={pass}
+        onChangeText={text => setPass(text)}
         />
          <Text
         style={{
@@ -162,7 +209,8 @@ const RegistrarDos = ({navigation}) => {
           }
           inputType="password"
         />
-        <CustomButton label={'Registrar'} onPress={() => navigation.navigate('Home')}  />
+       <CustomButton label={"Registrar"} onPress={validardatos} />
+
 
         <View
           style={{
