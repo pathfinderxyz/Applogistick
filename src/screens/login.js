@@ -1,23 +1,29 @@
-import React from 'react';
+import React,{useContext,useState} from 'react';
 import {
   SafeAreaView,
   View,
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 import CustomButton from './../componentes/CustomButton';
 import InputField from './../componentes/InputField';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { AuthContext } from './../context/AuthContext';
 
 /* const NavigatetoHome = props => {
   props.navigation.navigate('Home');
 } */
 
 const Login = ({navigation})  => {
+
+  const [email,setEmail] = useState(null);
+  const [password,setPassword] = useState(null);
+  const {LoginAuth}= useContext(AuthContext);
+
   return (
     
       <View style={styles.container}>
@@ -36,6 +42,7 @@ const Login = ({navigation})  => {
           }}>
           Iniciar sesion
         </Text>
+
         <Text
         style={{
             fontSize: 14,
@@ -46,8 +53,6 @@ const Login = ({navigation})  => {
          Correo electronico
         </Text>
         <InputField
-        
-          
           icon={
             <MaterialIcons
             name="alternate-email"
@@ -56,8 +61,9 @@ const Login = ({navigation})  => {
             style={{marginRight: 5}}
           />
           }
-         
           keyboardType="email-address"
+          value={email}
+          onChangeText={text => setEmail(text)}
           
         />
          <Text
@@ -70,7 +76,6 @@ const Login = ({navigation})  => {
           Contraseña
         </Text>
         <InputField
-          
           icon={
             <Ionicons
             name="ios-lock-closed-outline"
@@ -82,9 +87,13 @@ const Login = ({navigation})  => {
           inputType="password"
           fieldButtonLabel={"Olvidaste?"}
           fieldButtonFunction={() => {}}
+          value={password}
+          onChangeText={text => setPassword(text)}
         />
         
-        <CustomButton label={"Entrar"} onPress={() => navigation.navigate('Home')} />
+        <CustomButton label={"Entrar"} onPress={() => {
+          LoginAuth(email,password);
+          }} />
 
         <View
           style={{

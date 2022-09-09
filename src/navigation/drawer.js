@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
 import { View, Text, Settings } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -19,7 +18,8 @@ import CrearAnuncio from '../screens/crearanuncio';
 
 const Drawer = createDrawerNavigator();
 
-function MyDrawer() {
+const MyDrawer = () =>{
+
   return (
     <Drawer.Navigator
       useLegacyImplementation

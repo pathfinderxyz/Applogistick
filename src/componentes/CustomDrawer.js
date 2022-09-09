@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -13,8 +13,12 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { AuthContext } from '../context/AuthContext';
 
 const CustomDrawer = props => {
+
+  const {userInfo}= useContext(AuthContext);
+
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -33,7 +37,7 @@ const CustomDrawer = props => {
               fontSize: 18,
               marginBottom: 5,
             }}>
-            Jose M Carvajal
+            {userInfo[0].username}
           </Text>
           <View style={{flexDirection: 'row'}}>
             <Text
