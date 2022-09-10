@@ -44,10 +44,10 @@ const Registrar = ({ navigation }) => {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    if (nombre !== null && correo !== null &&  selected !== null && pass !== null ) {
-      RegistrarCliente();
-    } else {
+    if (nombre == null || correo == null || selected == null || pass == null ) {
       setError(true);
+    } else {
+      RegistrarCliente();
     }
   };
 

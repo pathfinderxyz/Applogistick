@@ -62,8 +62,8 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        isLoggedIn();
+    useEffect(async() => {
+        await isLoggedIn();
     }, []);
 
 

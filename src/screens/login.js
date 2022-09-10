@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react';
+import React,{useContext,useState,useEffect} from 'react';
 import {
   SafeAreaView,
   View,
@@ -28,13 +28,14 @@ const Login = ({navigation})  => {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    if (email !== null && password !== null) {
-      LoginAuth(email,password);
-    } else {
+    if (email == null || password == null) {
       setError(true);
+    } else {
+      LoginAuth(email,password);
     }
   };
 
+  
   return (
     
       <View style={styles.container}>

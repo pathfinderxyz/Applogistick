@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity,StyleSheet} from 'react-native';
 import { windowWidth } from './../utils/Dimensions';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, price, onPress}) {
+export default function ListItemHome({photo, title, subTitle, isFree, ciudad,pais, price, onPress}) {
   return (
     <View  style={styles.container}>
     <LinearGradient
@@ -18,7 +18,7 @@ export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, p
             numberOfLines={1}
             style={{
               color: '#fff',
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: 'bold',
               textTransform: 'uppercase',
             }}>
@@ -27,23 +27,9 @@ export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, p
           <Text
             style={{
               color: '#fff',
-              fontSize: 13,
+              fontSize: 14,
             }}>
             {subTitle}
-          </Text>
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 13,
-            }}>
-            PAIS: {pais}, CIUDAD: {ciudad} 
-          </Text>
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 13,
-            }}>
-            PRECIO: {price} 
           </Text>
           
         </View>
@@ -52,7 +38,7 @@ export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, p
 
       <TouchableOpacity onPress={onPress} style={{
         backgroundColor:'orange',
-        padding:8,
+        padding:10,
         width: 100,
         borderRadius: 7,
       }}>
@@ -62,7 +48,7 @@ export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, p
           fontSize: 14,
         }}>
          
-          Gestionar
+          {price}
         </Text>
       </TouchableOpacity>
     </View>

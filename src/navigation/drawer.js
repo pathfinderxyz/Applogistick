@@ -15,6 +15,8 @@ import Home from '../screens/home';
 import Chat from '../screens/chat';
 import Soporte from '../screens/soporte';
 import CrearAnuncio from '../screens/crearanuncio';
+import AnuncioRegistrado from '../screens/anuncioregistrado';
+import Config from '../screens/settings';
 
 
 
@@ -35,7 +37,7 @@ const MyDrawer = () =>{
         drawerLabelStyle: {
           marginLeft: -25,
           fontSize: 15,
-        },
+        }
       }}>
       <Drawer.Screen
         name="Home"
@@ -44,7 +46,9 @@ const MyDrawer = () =>{
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={22} color={color} />
           ),
-        }} />
+          
+        }} 
+        />
         
       <Drawer.Screen
         name="Planes de membresia"
@@ -74,6 +78,20 @@ const MyDrawer = () =>{
           ),
         }} />
          <Drawer.Screen
+        name="Misanuncios"
+        component={Config}
+        options={{
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          title: "Mis Anuncios",
+          headerTintColor: '#fff',
+          headerShown: true,
+          drawerIcon: ({ color }) => (
+            <Ionicons name="albums-outline" size={22} color={color} />
+          ),
+        }} />
+         <Drawer.Screen
         name="Chat"
         component={Chat}
         options={{
@@ -99,10 +117,9 @@ const MyDrawer = () =>{
             <Ionicons name="people-outline" size={22} color={color} />
           ),
         }} />
-
+       
+       
     </Drawer.Navigator>
-     
-
   );
 }
 export default MyDrawer;

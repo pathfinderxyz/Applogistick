@@ -8,6 +8,8 @@ export default function InputFieldClaro({
   keyboardType,
   fieldButtonLabel,
   fieldButtonFunction,
+  value,
+  onChangeText,
 }) {
   return (
     <View
@@ -25,6 +27,8 @@ export default function InputFieldClaro({
           placeholder={label}
           keyboardType={keyboardType}
           style={{flex: 1, paddingVertical:4,fontSize:15,paddingHorizontal:10,paddingTop:10}}
+          value={value}
+          onChangeText={onChangeText}
         />
     
       <TouchableOpacity onPress={fieldButtonFunction}>

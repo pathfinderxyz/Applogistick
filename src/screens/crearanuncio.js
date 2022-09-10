@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -21,15 +21,21 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import SelectList from "react-native-dropdown-select-list";
 import axios from "axios";
+import { AuthContext } from './../context/AuthContext';
 
-const CrearAnuncio = props => {
+const url = "https://apilogistick.iawork.tk/public/anuncios";
 
+const CrearAnuncio =  ({navigation})=> {
+
+  const { userInfo } = useContext(AuthContext);
+
+  const [titulo, setTitulo] = useState(null);
+  const [descripcion, setDescripcion] = useState(null);
   const [selected, setSelected] = React.useState("");
-  const [nombre, setNombre] = useState(null);
-  const [correo, setCorreo] = useState(null);
-  const [pais, setPais] = useState(null);
-  const [pass, setPass] = useState(null);
-  const rol = "cliente";
+  const [ciudad, setCiudad] = useState(null);
+  const [precio, setPrecio] = useState(null);
+  const tipo = "cliente";
+  const usuario = userInfo[0].id;
 
   const data = [
     { key: "Colombia", value: "Colombia" },
@@ -43,7 +49,13 @@ const CrearAnuncio = props => {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    if (nombre !== null && correo !== null &&  selected !== null && pass !== null ) {
+    console.log(titulo);
+    console.log(descripcion);
+    console.log(selected);
+    console.log(ciudad);
+    console.log(precio);
+    console.log(usuario);
+    if (titulo !== null && descripcion !== null && selected !== null && ciudad !== null && precio !== null) {
       RegistrarCliente();
     } else {
       setError(true);
@@ -52,152 +64,151 @@ const CrearAnuncio = props => {
 
   const RegistrarCliente = () => {
     axios
-      .post(url, { nombre, correo, selected, pass, rol })
+      .post(url, { titulo, descripcion, selected, ciudad, precio, tipo, usuario })
       .then((res) => {
         console.log(res.data);
-        navigation.navigate("GraciasRegistrar");
+        navigation.navigate("Misanuncios");
       })
       .catch((err) => {
         console.log(err);
       });
   };
- 
+
   return (
     <ScrollView>
-    <View showsVerticalScrollIndicator={false} style={styles.container}>
-    
-   
-      <Text
-        style={{
-          fontSize: 15,
-          fontWeight: "500",
-          color: "#000",
-          marginBottom: 30,
-          marginTop: 30,
-        }}
-      >
-       Introduzca los datos correspondientes a su anuncio:
-      </Text>
-      {Error && (
+      <View showsVerticalScrollIndicator={false} style={styles.container}>
+
+
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: "500",
-            color: "#f8e44b",
+            color: "#000",
             marginBottom: 30,
+            marginTop: 30,
           }}
         >
-          ¡Error, por favor rellene todos los campos!
+          Introduzca los datos correspondientes a su anuncio:
         </Text>
-      )}
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#000",
-          marginBottom: 5,
-        }}
-      >
-        Titulo de la solicitud
-      </Text>
+        {Error && (
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: "500",
+              color: "#000",
+              marginBottom: 30,
+            }}
+          >
+            ¡Error, por favor rellene todos los campos!
+          </Text>
+        )}
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          Titulo de la solicitud
+        </Text>
 
-      <InputField 
-        value={nombre}
-        onChangeText={(text) => setNombre(text)}
-      />
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#000",
-          marginBottom: 5,
-        }}
-      >
-        Descripcion de la solicitud
-      </Text>
-      <InputField
-        keyboardType="email-address"
-        value={correo}
-        onChangeText={(text) => setCorreo(text)}
-      />
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#000",
-          marginBottom: 5,
-        }}
-      >
-        País de la solicitud
-      </Text>
+        <InputField
+          value={titulo}
+          onChangeText={(text) => setTitulo(text)}
+        />
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          Descripcion de la solicitud
+        </Text>
+        <InputField
+          value={descripcion}
+          onChangeText={(text) => setDescripcion(text)}
+        />
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          País de la solicitud
+        </Text>
 
-      <SelectList
-        setSelected={setSelected}
-        data={data}
-        searchPlaceholder="Seleccione"
-        arrowicon={<Ionicons name="chevron-down" size={20} color={"#000"} />}
-        searchicon={
-          <Ionicons name="ios-lock-closed-outline" size={20} color={"#000"} />
-        }
-        search={false}
-        boxStyles={{
-          borderRadius: 5,
-          borderTop: 0,
-          borderLeft: 0,
-          borderRight: 0,
-          borderColor: "#ccc",
+        <SelectList
+          setSelected={setSelected}
+          data={data}
+          searchPlaceholder="Seleccione"
+          arrowicon={<Ionicons name="chevron-down" size={20} color={"#000"} />}
+          searchicon={
+            <Ionicons name="ios-lock-closed-outline" size={20} color={"#000"} />
+          }
+          search={false}
+          boxStyles={{
+            borderRadius: 5,
+            borderTop: 0,
+            borderLeft: 0,
+            borderRight: 0,
+            borderColor: "#ccc",
+            marginBottom: 15,
+          }} //override default styles
+          inputStyles={{ color: "#000" }}
+          dropdownTextStyles={{ color: "#000" }}
+          defaultOption={{ key: "0", value: "Seleccione un pais" }} //default selected option
+        />
+
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          Ciudad
+        </Text>
+        <InputField
+          value={ciudad}
+          onChangeText={(text) => setCiudad(text)}
+        />
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          Costo de la solicitud
+        </Text>
+        <InputField
+          value={precio}
+          onChangeText={(text) => setPrecio(text)}
+        />
+        <CustomButton label={"Registrar Anuncio"} onPress={validardatos} />
+
+
+        <Text style={{
+          fontSize: 14,
+          color: '#000',
+          marginLeft: 14,
+          marginRight: 14,
           marginBottom: 15,
-        }} //override default styles
-        inputStyles={{ color: "#000" }}
-        dropdownTextStyles={{ color: "#000" }}
-        defaultOption={{ key: "0", value: "Seleccione un pais" }} //default selected option
-      />
+          marginTop: 20
+        }}>
+          Para mas informacion puede comunicarse a nuestro correo info@applogistick.com
+        </Text>
 
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#000",
-          marginBottom: 5,
-        }}
-      >
-        Ciudad 
-      </Text>
-      <InputField
-        inputType="password"
-        value={pass}
-        onChangeText={(text) => setPass(text)}
-      />
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#000",
-          marginBottom: 5,
-        }}
-      >
-      Costo de la solicitud
-      </Text>
-      <InputField 
-        inputType="password"
-      />
-      <CustomButton label={"Registrar Anuncio"} onPress={validardatos} />
-
-      
-      <Text style={{
-         fontSize: 14,
-         color:'#000',
-         marginLeft:14,
-         marginRight:14,
-         marginBottom:15,
-         marginTop:20
-         }}>
-         Para mas informacion puede comunicarse a nuestro correo info@applogistick.com
-       </Text>
-       
-    </View>
+      </View>
     </ScrollView>
-   
+
   );
 }
 const styles = StyleSheet.create({

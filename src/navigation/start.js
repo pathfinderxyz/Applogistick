@@ -13,6 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tabs from './tabs';
 import Detalless from '../screens/detalles2';
 import GraciasRegistrar from '../screens/GraciasRegistrar';
+import AnuncioRegistrado from '../screens/anuncioregistrado';
 
 const Stack = createNativeStackNavigator();
 

@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './src/navigation/start';
 import { AuthProvider } from './src/context/AuthContext';
 import AppNav from './src/navigation/Appnav';
+import { StatusBar } from 'expo-status-bar';
 
 
 const Stack = createNativeStackNavigator();
@@ -14,6 +15,7 @@ function App() {
 
 
     <AuthProvider>
+      <StatusBar style="light" />
       <AppNav />
     </AuthProvider>
 
