@@ -32,30 +32,44 @@ const CrearAnuncio =  ({navigation})=> {
   const [titulo, setTitulo] = useState(null);
   const [descripcion, setDescripcion] = useState(null);
   const [selected, setSelected] = React.useState("");
+  const [selectedcat, setSelectedCat] = React.useState("");
   const [ciudad, setCiudad] = useState(null);
   const [precio, setPrecio] = useState(null);
   const tipo = "cliente";
   const usuario = userInfo[0].id;
 
   const data = [
-    { key: "Colombia", value: "Colombia" },
-    { key: "Venezuela", value: "Venezuela" },
-    { key: "Brasil", value: "Brasil" },
-    { key: "Peru", value: "Peru" },
-    { key: "Mexico", value: "Mexico" },
     { key: "Argentina", value: "Argentina" },
+    { key: "Chile", value: "Chile" },
+    { key: "Colombia", value: "Colombia" },
+    { key: "Mexico", value: "Mexico" },
+    { key: "Paraguay", value: "Paraguay" },
+    { key: "Peru", value: "Peru" },
+    { key: "Uruguay", value: "Uruguay" },
+    { key: "Venezuela", value: "Venezuela" }
+  ];
+
+  const datacategoria = [
+    { key: "Mensajero", value: "Mensajero" },
+    { key: "Entregas", value: "Entrega de paquetes" },
+    { key: "Mudanzas", value: "Mudanzas" },
+    { key: "Transporte", value: "Transporte de carga" },
+    { key: "apoyologistico.", value: "Personal de apoyo logistico." },
+    { key: "Personallimpieza", value: "Personal de limpieza" }
+
   ];
 
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
     console.log(titulo);
+    console.log(selectedcat);
     console.log(descripcion);
     console.log(selected);
     console.log(ciudad);
     console.log(precio);
     console.log(usuario);
-    if (titulo !== null && descripcion !== null && selected !== null && ciudad !== null && precio !== null) {
+    if (titulo !== null && selectedcat !== null && descripcion !== null && selected !== null && ciudad !== null && precio !== null) {
       RegistrarCliente();
     } else {
       setError(true);
@@ -64,7 +78,7 @@ const CrearAnuncio =  ({navigation})=> {
 
   const RegistrarCliente = () => {
     axios
-      .post(url, { titulo, descripcion, selected, ciudad, precio, tipo, usuario })
+      .post(url, { titulo, selectedcat, descripcion, selected, ciudad, precio, tipo, usuario })
       .then((res) => {
         console.log(res.data);
         navigation.navigate("Misanuncios");
@@ -117,6 +131,40 @@ const CrearAnuncio =  ({navigation})=> {
           value={titulo}
           onChangeText={(text) => setTitulo(text)}
         />
+
+         <Text
+          style={{
+            fontSize: 14,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+          Categoria del servicio
+        </Text>
+
+        <SelectList
+          setSelected={setSelectedCat}
+          data={datacategoria}
+          searchPlaceholder="Seleccione"
+          arrowicon={<Ionicons name="chevron-down" size={20} color={"#000"} />}
+          searchicon={
+            <Ionicons name="ios-lock-closed-outline" size={20} color={"#000"} />
+          }
+          search={false}
+          boxStyles={{
+            borderRadius: 5,
+            borderTop: 0,
+            borderLeft: 0,
+            borderRight: 0,
+            borderColor: "#ccc",
+            marginBottom: 15,
+          }} //override default styles
+          inputStyles={{ color: "#000" }}
+          dropdownTextStyles={{ color: "#000" }}
+          defaultOption={{ key: "0", value: "Seleccione una categoria" }} //default selected option
+        />
+
         <Text
           style={{
             fontSize: 14,
@@ -125,7 +173,7 @@ const CrearAnuncio =  ({navigation})=> {
             marginBottom: 5,
           }}
         >
-          Descripcion de la solicitud
+          Descripcion del servicio
         </Text>
         <InputField
           value={descripcion}
@@ -139,7 +187,7 @@ const CrearAnuncio =  ({navigation})=> {
             marginBottom: 5,
           }}
         >
-          País de la solicitud
+          País del servicio
         </Text>
 
         <SelectList
@@ -172,7 +220,7 @@ const CrearAnuncio =  ({navigation})=> {
             marginBottom: 5,
           }}
         >
-          Ciudad
+          Ciudad del servicio
         </Text>
         <InputField
           value={ciudad}
@@ -186,7 +234,7 @@ const CrearAnuncio =  ({navigation})=> {
             marginBottom: 5,
           }}
         >
-          Costo de la solicitud
+          Presupuesto inicial
         </Text>
         <InputField
           value={precio}

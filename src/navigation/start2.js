@@ -31,17 +31,6 @@ const Start2= () => {
           headerTintColor: '#fff',
       })
       }/>
-      <Stack.Screen name="Detalless" component={Detalless} 
-      options={
-        ({ route, navigation }) => ({
-        title: route.params?.title,
-        headerShown: true,
-        headerStyle: {
-            backgroundColor: '#0a1d60',
-          },
-          headerTintColor: '#fff',
-      })
-      }/>
       
     </Stack.Navigator>
   );

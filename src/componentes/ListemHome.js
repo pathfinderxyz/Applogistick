@@ -35,13 +35,21 @@ export default function ListItemHome({photo, title, subTitle, isFree, ciudad,pai
         </View>
         
       </View>
-
+      
       <TouchableOpacity onPress={onPress} style={{
         backgroundColor:'orange',
         padding:10,
         width: 100,
         borderRadius: 7,
       }}>
+      <Text style={{
+          color: '#fff',
+          textAlign: 'center',
+          fontSize: 13,
+          fontWeight:'600'
+        }}>
+         Oferta inicial
+        </Text>
         <Text style={{
           color: '#fff',
           textAlign: 'center',

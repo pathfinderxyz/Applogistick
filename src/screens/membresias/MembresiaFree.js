@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 
-const Metodos= ({navigation}) => {
+const MembresiaFree= ({navigation}) => {
   return (
     <View style={{marginHorizontal:10,marginTop: 20}}>
 
@@ -17,31 +17,33 @@ const Metodos= ({navigation}) => {
             marginRight:14,
             marginBottom:15,
             }}>
-            Adquiera una de nuestras membresias y disfrute de sus beneficios:
+           Usted obtendra la membresia free inmediatamente despues de registrarse en nuestra App sin ningun costo adicional.
       </Text>
-      <TouchableOpacity
-        style={{
-          padding: 20,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomColor: '#d7d6d6',
-          borderBottomWidth: 1,
-        }}
-        onPress={() => navigation.navigate('Membresia Free')}>
-        <Text
-          style={{
-            color: '#000',
+      <Text style={{
+           color: '#000',
             fontSize: 17,
-            textAlign: 'center',
-            fontWeight: 'bold'
-          }}>
-          Membresia Free - 0$
-        </Text>
-        
-
-        <MaterialIcons name="arrow-forward-ios" size={18} color="#898484" />
-      </TouchableOpacity>
-
+            textAlign: 'left',
+            fontWeight: 'bold',
+            marginLeft:14,
+            marginRight:14,
+            marginBottom:15
+            }}>
+            Beneficios
+          </Text>
+          <Text style={{
+            fontSize: 15,
+            color:'#000',
+            marginLeft:14,
+            marginRight:14,
+            marginBottom:15,
+            lineHeight:30
+            }}>
+           *Ver servicios publicados.{'\n'}
+           *Crear hasta 3 propuestas mensuales.{'\n'}
+           *Hasta 1 Servicio en curso.{'\n'}
+           *No incluye Chat.{'\n'}
+           *No incluye notificaciones.
+      </Text>
       <TouchableOpacity
         style={{
           padding: 20,
@@ -58,19 +60,10 @@ const Metodos= ({navigation}) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-          Membresia Premium  
-          <Text
-          style={{
-            color: 'green',
-            fontSize: 15,
-            textAlign: 'center',
-            fontWeight: 'bold'
-          }}>
-            -50$ Mensual
+          Cambiar a Premium
         </Text>
-        </Text>
+        
 
-       
         <MaterialIcons name="arrow-forward-ios" size={18} color="#898484" />
       </TouchableOpacity>
       <Text style={{
@@ -83,8 +76,8 @@ const Metodos= ({navigation}) => {
             }}>
             Para mas informacion puede comunicarse a nuestro correo info@applogistick.com
           </Text>
-     
+
     </View>
   );
 }
-export default Metodos;
+export default MembresiaFree;

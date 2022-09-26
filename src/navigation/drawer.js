@@ -17,13 +17,18 @@ import Soporte from '../screens/soporte';
 import CrearAnuncio from '../screens/crearanuncio';
 import AnuncioRegistrado from '../screens/anuncioregistrado';
 import Config from '../screens/settings';
-
+import GameDetailsScreen from '../screens/DetallesJuegos';
+import MembresiaFree from '../screens/membresias/MembresiaFree';
+import MembresiaPremium from '../screens/membresias/MenbresiaPremium';
+import MisDatos from '../screens/Cuenta/MisDatos';
+import CambiarEmail from '../screens/Cuenta/CambiarEmail';
 
 
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
-const MyDrawer = () =>{
+function Root() {
   
   return (
     <Drawer.Navigator
@@ -122,4 +127,47 @@ const MyDrawer = () =>{
     </Drawer.Navigator>
   );
 }
-export default MyDrawer;
+
+export default function MyDrawer() {
+  return (
+      <Stack.Navigator>
+        <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} /> 
+        <Stack.Screen name="Membresia Free" component={MembresiaFree} 
+        title='Membresia Free'
+        options={{
+        headerShown: true,
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+        <Stack.Screen name="Membresia Premium" component={MembresiaPremium} 
+        title='Membresia Premium'
+        options={{
+        headerShown: true,
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+         <Stack.Screen name="MisDatos" component={MisDatos} 
+        
+        options={{
+        headerShown: true,
+        title:'Mis Datos',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+
+     <Stack.Screen name="CambiarEmail" component={CambiarEmail} 
+        
+        options={{
+        headerShown: true,
+        title:'Cambiar Datos',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+      </Stack.Navigator>
+  );
+}
+

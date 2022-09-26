@@ -9,6 +9,7 @@ export default function InputFieldClaro({
   fieldButtonLabel,
   fieldButtonFunction,
   value,
+  text,
   onChangeText,
 }) {
   return (
@@ -16,7 +17,7 @@ export default function InputFieldClaro({
       style={{
         flexDirection: 'row',
         borderColor: '#ccc',
-        borderWidth: 1,
+        borderBottomWidth:1,
         paddingBottom: 10,
         marginBottom: 25,
         borderRadius:5,

@@ -37,7 +37,7 @@ const Config = ({navigation, route}) => {
     <ScrollView>
     <View style={{flex:1,alignItems:'center',marginTop:20}}>
        {gamesTab == 1 &&
-          data.map(item => (
+        data.sort((a, b) => b.id - a.id).map(item => (
             <ListItem
               key={item.id}
               title={item.nombre}

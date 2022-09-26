@@ -18,7 +18,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Detalless')}>
+        onPress={() => navigation.navigate('MisDatos')}>
         <Text
           style={{
             color: '#000',
@@ -39,7 +39,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Detalless')}>
+        onPress={() => navigation.navigate('CambiarEmail')}>
         <Text
           style={{
             color: '#000',
@@ -47,7 +47,7 @@ const Cuenta = ({navigation}) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-          Cambiar Email
+          Cambiar Datos
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={18} color="#898484" />
       </TouchableOpacity>
@@ -130,7 +130,7 @@ const Cuenta = ({navigation}) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-         Salir
+         Estado
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={18} color="#898484" />
       </TouchableOpacity>
