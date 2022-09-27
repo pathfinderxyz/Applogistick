@@ -22,6 +22,10 @@ import MembresiaFree from '../screens/membresias/MembresiaFree';
 import MembresiaPremium from '../screens/membresias/MenbresiaPremium';
 import MisDatos from '../screens/Cuenta/MisDatos';
 import CambiarEmail from '../screens/Cuenta/CambiarEmail';
+import CambiarPass from '../screens/Cuenta/CambiarPass';
+import Notificacion from '../screens/Cuenta/Notificaciones';
+import HistorialServicios from '../screens/Cuenta/Historial';
+import Estado from '../screens/Cuenta/Estado';
 
 
 
@@ -163,6 +167,42 @@ export default function MyDrawer() {
         options={{
         headerShown: true,
         title:'Cambiar Datos',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+        <Stack.Screen name="CambiarPass" component={CambiarPass} 
+        
+        options={{
+        headerShown: true,
+        title:'Contraseña',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+        <Stack.Screen name="Notificacion" component={Notificacion} 
+        
+        options={{
+        headerShown: true,
+        title:'Notificaciones',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+         <Stack.Screen name="Historial" component={HistorialServicios} 
+        
+        options={{
+        headerShown: true,
+        title:'Historial',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+        <Stack.Screen name="Estado" component={Estado} 
+        
+        options={{
+        headerShown: true,
+        title:'Estado',
         headerStyle: {backgroundColor: '#0a1d60',},
         headerTintColor: '#fff',
       }}

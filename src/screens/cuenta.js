@@ -60,7 +60,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Detalless')}>
+        onPress={() => navigation.navigate('CambiarPass')}>
         <Text
           style={{
             color: '#000',
@@ -68,7 +68,7 @@ const Cuenta = ({navigation}) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-          Cambiar contraseña
+          Contraseña
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={18} color="#898484" />
       </TouchableOpacity>
@@ -81,7 +81,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Detalless')}>
+        onPress={() => navigation.navigate('Notificacion')}>
         <Text
           style={{
             color: '#000',
@@ -101,7 +101,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Detalless')}>
+        onPress={() => navigation.navigate('Historial')}>
         <Text
           style={{
             color: '#000',
@@ -122,7 +122,7 @@ const Cuenta = ({navigation}) => {
           borderBottomColor: '#d7d6d6',
           borderBottomWidth: 1,
         }}
-        onPress={() => navigation.navigate('Login')}>
+        onPress={() => navigation.navigate('Estado')}>
         <Text
           style={{
             color: '#000',

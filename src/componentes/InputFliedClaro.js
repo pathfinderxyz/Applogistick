@@ -24,6 +24,17 @@ export default function InputFieldClaro({
     
       }}>
       {icon}
+      {inputType == 'password' ? (
+       <TextInput
+          placeholder={label}
+          keyboardType={keyboardType}
+          style={{flex: 1, paddingVertical: 0, color: '#000'}}
+          secureTextEntry={true}
+          value={value}
+          onChangeText={onChangeText}
+         
+        />
+        ) : (
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
@@ -31,7 +42,7 @@ export default function InputFieldClaro({
           value={value}
           onChangeText={onChangeText}
         />
-    
+    )}
       <TouchableOpacity onPress={fieldButtonFunction}>
         <Text style={{color: '#AD40AF', fontWeight: '700'}}>{fieldButtonLabel}</Text>
       </TouchableOpacity>
