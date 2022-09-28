@@ -28,7 +28,7 @@ const url = "https://apilogistick.iawork.tk/public/anuncios";
 const urlfiltro = "https://apilogistick.iawork.tk/public/anunciosfiltro";
 
 const datacategoria = [
-  { key: "todos", value: "Todos" },
+  { key: "todos", value: "todos" },
   { key: "Mensajero", value: "Mensajero" },
   { key: "Entregas", value: "Entrega de paquetes" },
   { key: "Mudanzas", value: "Mudanzas" },
@@ -38,7 +38,7 @@ const datacategoria = [
 ];
 
 const datapais = [
-  { key: "todos", value: "Todos" },
+  { key: "todos", value: "todos" },
   { key: "Argentina", value: "Argentina" },
   { key: "Chile", value: "Chile" },
   { key: "Colombia", value: "Colombia" },
@@ -162,9 +162,13 @@ const Home = ({ navigation }) => {
                 ciudad={item.ciudad}
                 price={item.precio}
                 onPress={() =>
-                  navigation.navigate("Detalles", {
-                    title: item.title,
+                  navigation.navigate('detalless', {
+                    title: item.nombre,
                     id: item.id,
+                    descripcion:item.descripcion,
+                    pais:item.pais,
+                    ciudad:item.ciudad,
+                    precio:item.precio
                   })
                 }
               />
@@ -185,7 +189,7 @@ const Home = ({ navigation }) => {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>
-                Filtre el servicio que busca:
+                Filtre la categoria del servicio y el pais que busca:
               </Text>
 
               <SelectList

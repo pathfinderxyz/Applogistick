@@ -19,7 +19,7 @@ const MembresiaPremium= ({navigation}) => {
             marginRight:14,
             marginBottom:15,
             }}>
-           Para adquirir nuestra membresia premium debe realizar un pago de 50$ mensuales via paypal.
+           Para contratar un servicio adquiera nuestra membresia premium, debe realizar un pago de 50$ mensuales via paypal.
       </Text>
       <Text style={{
            color: '#000',

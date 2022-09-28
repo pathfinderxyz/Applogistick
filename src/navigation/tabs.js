@@ -58,7 +58,7 @@ function Tabs() {
         }}
       />
       <Tab.Screen
-        name="Servicios Activos"
+        name="Mis Anuncios Activos"
         component={Config}
         options={{
           headerStyle: {

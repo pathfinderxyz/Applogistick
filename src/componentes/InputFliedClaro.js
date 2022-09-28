@@ -17,7 +17,7 @@ export default function InputFieldClaro({
       style={{
         flexDirection: 'row',
         borderColor: '#ccc',
-        borderBottomWidth:1,
+        borderWidth:1,
         paddingBottom: 10,
         marginBottom: 25,
         borderRadius:5,

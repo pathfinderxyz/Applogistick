@@ -45,8 +45,7 @@ const Config = ({navigation, route}) => {
               pais={item.pais}
               ciudad={item.ciudad}
               price={item.precio}
-              onPress={() =>
-                navigation.navigate('Chat', {
+              onPress={() =>({
                   title: item.title,
                   id: item.id,
                 })

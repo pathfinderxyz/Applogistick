@@ -26,6 +26,7 @@ import CambiarPass from '../screens/Cuenta/CambiarPass';
 import Notificacion from '../screens/Cuenta/Notificaciones';
 import HistorialServicios from '../screens/Cuenta/Historial';
 import Estado from '../screens/Cuenta/Estado';
+import Detalless from '../screens/detalles2';
 
 
 
@@ -203,6 +204,15 @@ export default function MyDrawer() {
         options={{
         headerShown: true,
         title:'Estado',
+        headerStyle: {backgroundColor: '#0a1d60',},
+        headerTintColor: '#fff',
+      }}
+        />
+         <Stack.Screen name="detalless" component={Detalless} 
+        
+        options={{
+        headerShown: true,
+        title:'Detalles',
         headerStyle: {backgroundColor: '#0a1d60',},
         headerTintColor: '#fff',
       }}

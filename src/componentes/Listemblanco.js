@@ -3,12 +3,12 @@ import {View, Text, Image, TouchableOpacity,StyleSheet} from 'react-native';
 import { windowWidth } from './../utils/Dimensions';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function ListItemHome({photo, title, subTitle, isFree, ciudad,pais, price, onPress}) {
+export default function ListItemBlanco({photo, title, subTitle, isFree, ciudad,pais, price, onPress}) {
   return (
     <View  style={styles.container}>
     <LinearGradient
         // Background Linear Gradient
-        colors={['#0c3758', 'transparent']}
+        colors={['#fff', '#fff']}
         style={styles.background}
       />
       <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
@@ -17,8 +17,8 @@ export default function ListItemHome({photo, title, subTitle, isFree, ciudad,pai
         <Text
             numberOfLines={1}
             style={{
-              color: '#fff',
-              fontSize: 14,
+              color: '#000',
+              fontSize: 15,
               fontWeight: 'bold',
               textTransform: 'uppercase',
             }}>
@@ -26,37 +26,43 @@ export default function ListItemHome({photo, title, subTitle, isFree, ciudad,pai
           </Text>
           <Text
             style={{
-              color: '#fff',
-              fontSize: 14,
+              color: '#000',
+              fontSize: 13,
             }}>
             {subTitle}
+          </Text>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 13,
+            }}>
+            PAIS: {pais}, CIUDAD: {ciudad} 
+          </Text>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 13,
+            }}>
+            PRECIO: {price} 
           </Text>
           
         </View>
         
       </View>
-      
+
       <TouchableOpacity onPress={onPress} style={{
-        backgroundColor:'orange',
-        padding:10,
+        backgroundColor:'#07092c',
+        padding:8,
         width: 100,
         borderRadius: 7,
       }}>
-      <Text style={{
-          color: '#fff',
-          textAlign: 'center',
-          fontSize: 11,
-          fontWeight:'600'
-        }}>
-         Oferta inicial
-        </Text>
         <Text style={{
           color: '#fff',
           textAlign: 'center',
           fontSize: 14,
         }}>
          
-          {price}
+          Ver
         </Text>
       </TouchableOpacity>
     </View>
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     marginHorizontal: 25,
-    backgroundColor:'#365a76',
+    backgroundColor:'#fff',
     padding:25,
     borderRadius:15
   },
