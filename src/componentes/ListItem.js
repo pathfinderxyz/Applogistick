@@ -62,7 +62,7 @@ export default function ListItem({photo, title, subTitle, isFree, ciudad,pais, p
           fontSize: 14,
         }}>
          
-          Gestionar
+          Editar
         </Text>
       </TouchableOpacity>
     </View>

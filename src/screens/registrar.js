@@ -33,12 +33,14 @@ const Registrar = ({ navigation }) => {
   const rol = "cliente";
 
   const data = [
-    { key: "Colombia", value: "Colombia" },
-    { key: "Venezuela", value: "Venezuela" },
-    { key: "Brasil", value: "Brasil" },
-    { key: "Peru", value: "Peru" },
-    { key: "Mexico", value: "Mexico" },
     { key: "Argentina", value: "Argentina" },
+    { key: "Chile", value: "Chile" },
+    { key: "Colombia", value: "Colombia" },
+    { key: "Mexico", value: "Mexico" },
+    { key: "Paraguay", value: "Paraguay" },
+    { key: "Peru", value: "Peru" },
+    { key: "Uruguay", value: "Uruguay" },
+    { key: "Venezuela", value: "Venezuela" }
   ];
 
   const [Error, setError] = useState(false);

@@ -53,7 +53,7 @@ const Detalless = ({navigation, route}) => {
             textAlign: 'left',
             fontWeight: 'bold'
           }}>
-          Adquirir servicio
+          Ofertar
         </Text>
         
         <MaterialIcons name="arrow-forward-ios" size={18} color="#fff" />
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
     backgroundColor:'#fff',
     padding:25,
-    borderRadius:15
+    borderRadius:15,
+    marginTop:-8,
   },
   background: {
     position: 'absolute',
