@@ -41,12 +41,8 @@ const MembresiaPremium= ({navigation}) => {
             lineHeight:30
             }}>
            *Ver servicios publicados.{'\n'}
-           *Crear propuestas ilimitadas.{'\n'}
-           *Hasta 10 Servicio en curso.{'\n'}
-           *Incluye Chat.{'\n'}
-           *Incluye notificaciones.{'\n'}
-           *Ver correo electronico del anunciante{'\n'}
-           *Proteccion contra estafas{'\n'}
+           *Incluye chat con el solicitante.{'\n'}
+           *Recibe notificaciones de los servicio publicados.{'\n'}
       </Text>
       <TouchableOpacity
         style={{
@@ -66,7 +62,7 @@ const MembresiaPremium= ({navigation}) => {
             textAlign: 'left',
             fontWeight: 'bold'
           }}>
-          Pagar por paypal
+          Pagar por Mercadopago
         </Text>
         
         <MaterialIcons name="arrow-forward-ios" size={18} color="#000" />

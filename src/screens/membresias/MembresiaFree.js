@@ -39,7 +39,7 @@ const MembresiaFree= ({navigation}) => {
             lineHeight:30
             }}>
            *Ver servicios publicados.{'\n'}
-           *Crear hasta 3 propuestas mensuales.{'\n'}
+           *Ver correo del solicitante para enviar ofertas.{'\n'}
            *Hasta 1 Servicio en curso.{'\n'}
            *No incluye Chat.{'\n'}
            *No incluye notificaciones.

@@ -55,7 +55,8 @@ const CrearAnuncio =  ({navigation})=> {
     { key: "Mudanzas", value: "Mudanzas" },
     { key: "Transporte", value: "Transporte de carga" },
     { key: "apoyologistico.", value: "Personal de apoyo logistico." },
-    { key: "Personallimpieza", value: "Personal de limpieza" }
+    { key: "Personallimpieza", value: "Personal de limpieza" },
+    { key: "Domiciliario", value: "Domiciliario" }
 
   ];
 
@@ -81,7 +82,7 @@ const CrearAnuncio =  ({navigation})=> {
       .post(url, { titulo, selectedcat, descripcion, selected, ciudad, precio, tipo, usuario })
       .then((res) => {
         console.log(res.data);
-        navigation.navigate("Misanuncios");
+        navigation.navigate("RegistroExitoso");
       })
       .catch((err) => {
         console.log(err);

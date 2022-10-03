@@ -6,32 +6,31 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-
-
-const MembresiaPremium= ({navigation}) => {
+const PromoAnuncio= ({navigation}) => {
   return (
     <View style={{marginHorizontal:10,marginTop: 20}}>
-        
+
        <Text style={{
-            fontSize: 18,
+            fontSize: 15,
             color:'#000',
             marginLeft:14,
             marginRight:14,
             marginBottom:15,
             }}>
-             El anuncio se registro con exito
+           Puede pagar para destacar su anuncio en los primeros 5 lugares.
       </Text>
-
+      
       <TouchableOpacity
         style={{
           padding: 17,
           flexDirection: 'row',
           justifyContent: 'space-between',
-          backgroundColor:'#33cf1e',
+          backgroundColor:'orange',
           borderRadius: 8
     
         }}
-        onPress={() => navigation.navigate('Misanuncios')}>
+        >
+        <Ionicons name="card" size={20} color="#000" />
         <Text
           style={{
             color: '#000',
@@ -39,14 +38,24 @@ const MembresiaPremium= ({navigation}) => {
             textAlign: 'left',
             fontWeight: 'bold'
           }}>
-          Ir Anuncios
+          Pagar por Mercadopago
         </Text>
         
         <MaterialIcons name="arrow-forward-ios" size={18} color="#000" />
       </TouchableOpacity>
-    
+      
+      <Text style={{
+            fontSize: 14,
+            color:'#000',
+            marginLeft:14,
+            marginRight:14,
+            marginBottom:15,
+            marginTop:20
+            }}>
+            Para mas informacion puede comunicarse a nuestro correo info@applogistick.com
+          </Text>
 
     </View>
   );
 }
-export default MembresiaPremium;
+export default PromoAnuncio;

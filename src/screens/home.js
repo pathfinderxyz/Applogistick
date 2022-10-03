@@ -35,6 +35,7 @@ const datacategoria = [
   { key: "Transporte", value: "Transporte de carga" },
   { key: "apoyologistico.", value: "Personal de apoyo logistico." },
   { key: "Personallimpieza", value: "Personal de limpieza" },
+  { key: "Domiciliario", value: "Domiciliario" }
 ];
 
 const datapais = [
@@ -137,7 +138,7 @@ const Home = ({ navigation }) => {
             padding: 14,
           }}
         >
-          Servicios disponibles
+         Anuncios disponibles
         </Text>
         <Text
           style={{

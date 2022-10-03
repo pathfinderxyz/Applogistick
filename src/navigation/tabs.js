@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import * as React from "react";
+import React, { useContext, useState } from 'react';
 import { View, Text, Settings } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
@@ -16,10 +16,18 @@ import Home from "./../screens/home";
 import Config from "./../screens/settings";
 import MyDrawer from "./drawer";
 import Cuenta from "../screens/cuenta";
+import { AuthContext } from '../context/AuthContext';
+import AnunciosContratados from "../screens/anuncioscontratados";
 
 const Tab = createBottomTabNavigator();
 
+
+
+
 function Tabs() {
+
+  const { userInfo } = useContext(AuthContext);
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -57,6 +65,7 @@ function Tabs() {
           ),
         }}
       />
+       {userInfo[0].rol == 'cliente' ?
       <Tab.Screen
         name="Mis Anuncios Activos"
         component={Config}
@@ -71,6 +80,22 @@ function Tabs() {
           ),
         }}
       />
+      :
+      <Tab.Screen
+      name="Anuncios Contratados"
+      component={AnunciosContratados}
+      options={{
+        headerStyle: {
+          backgroundColor: '#0a1d60',
+        },
+        headerTintColor: '#fff',
+        headerShown: true,
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="checkmark-done-circle" color={color} size={24} />
+        ),
+      }}
+    />
+    }
       <Tab.Screen
         name="Cuenta"
         component={Cuenta}
