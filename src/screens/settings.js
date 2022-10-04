@@ -23,20 +23,22 @@ const Config = ({navigation, route}) => {
   const peticionGet = async () => {
     await axios.get(url + "/" + idusuario).then(response => {
       setData(response.data);
-      console.log(response.data);
+    
     })
   }
 
-  console.log(data);
+ console.log(data);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
+  
+  useEffect(async() => {
     await peticionGet();
-  }, []);
+  }, [gamesTab]);
 
   return (
     <ScrollView>
     <View style={{flex:1,alignItems:'center',marginTop:20}}>
-       {gamesTab == 1 &&
+   
+      {gamesTab == 1 &&
         data.sort((a, b) => b.id - a.id).map(item => (
             <ListItem
               key={item.id}

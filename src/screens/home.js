@@ -61,7 +61,7 @@ const Home = ({ navigation }) => {
   const peticionGet = async () => {
     await axios.get(url).then((response) => {
       setData(response.data);
-      console.log(response.data);
+    
     });
   };
 
@@ -70,7 +70,7 @@ const Home = ({ navigation }) => {
       console.log(selectedPais);
       axios.post(urlfiltro, {selectedCat,selectedPais }).then((res) => {
         setData(res.data);
-        console.log(res.data);
+        
         setModalVisible(false);
       })
       .catch((err) => {
@@ -79,9 +79,10 @@ const Home = ({ navigation }) => {
       });
   };
 
- 
+ console.log(data);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
+  useEffect(async() => {
     await peticionGet();
   }, []);
 
@@ -140,6 +141,10 @@ const Home = ({ navigation }) => {
         >
          Anuncios disponibles
         </Text>
+        <View style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}>
         <Text
           style={{
             fontSize: 15,
@@ -150,6 +155,15 @@ const Home = ({ navigation }) => {
         >
           Encuentre el servicio que desee
         </Text>
+        <TouchableOpacity onPress={peticionGet}>
+          <Ionicons
+            name="reload"
+            size={19}
+            color="#fff"
+            style={{ paddingRight: 17 }}
+          />
+        </TouchableOpacity>
+        </View>
 
         {gamesTab == 1 &&
           data
