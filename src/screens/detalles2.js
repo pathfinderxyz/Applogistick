@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
 import { View, Text,StyleSheet,TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AuthContext } from '../context/AuthContext';
 
 const Detalless = ({navigation, route}) => {
+  const { userInfo } = useContext(AuthContext);
   return (
     <SafeAreaView>
     <View style={styles.container}>
@@ -33,7 +35,7 @@ const Detalless = ({navigation, route}) => {
       
     </View>
 
-     
+    {userInfo[0].rol == 'logialiado' && (
     <TouchableOpacity
         style={{
           padding: 17,
@@ -57,7 +59,8 @@ const Detalless = ({navigation, route}) => {
         </Text>
         
         <MaterialIcons name="arrow-forward-ios" size={18} color="#fff" />
-      </TouchableOpacity>
+      </TouchableOpacity>)}
+
     </SafeAreaView>
   )
 }

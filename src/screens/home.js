@@ -16,7 +16,7 @@ import CustomSwitch from "./../componentes/CustomSwitch";
 import ListItemHome from "./../componentes/ListemHome";
 import { freeGames, paidGames, promo, sliderData } from "./../model/data";
 import { LinearGradient } from "expo-linear-gradient";
-import Ionicons from "react-native-vector-icons/Ionicons";
+
 import axios from "axios";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SelectList from "react-native-dropdown-select-list";

@@ -1,5 +1,5 @@
 import { useState,useEffect,useContext } from 'react';
-import { View, Text,Button } from 'react-native';
+import { View, Text,Button,TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ListItem from './../componentes/ListItem';
@@ -7,6 +7,7 @@ import { freeGames, paidGames, promo, sliderData } from './../model/data';
 import axios from 'axios';
 import { AuthContext } from './../context/AuthContext';
 import { ScrollView } from 'react-native-gesture-handler';
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const NavigatetoHome = props => {
     props.navigation.navigate('Home');
@@ -30,14 +31,38 @@ const Config = ({navigation, route}) => {
  console.log(data);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   
-  useEffect(async() => {
-    await peticionGet();
-  }, [gamesTab]);
+  useEffect(() => {
+    peticionGet();
+  }, []);
 
   return (
     <ScrollView>
+     <View style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginLeft: 25,
+          marginTop: 20,
+        }}>
+        <TouchableOpacity onPress={peticionGet}>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight:'bold',
+            color: "#000",
+            
+          }}
+        >Actualizar&nbsp;
+        <Ionicons
+            name="reload"
+            size={14}
+            color="#000"
+          />
+          
+        </Text>
+          
+        </TouchableOpacity>
+      </View>
     <View style={{flex:1,alignItems:'center',marginTop:20}}>
-   
       {gamesTab == 1 &&
         data.sort((a, b) => b.id - a.id).map(item => (
             <ListItem
@@ -47,11 +72,16 @@ const Config = ({navigation, route}) => {
               pais={item.pais}
               ciudad={item.ciudad}
               price={item.precio}
-              onPress={() =>({
-                  title: item.title,
-                  id: item.id,
-                })
-              }
+              onPress={() =>
+                  navigation.navigate('EditarAnuncio', {
+                    title: item.nombre,
+                    id: item.id,
+                    descripcion:item.descripcion,
+                    pais:item.pais,
+                    ciudad:item.ciudad,
+                    precio:item.precio
+                  })
+                }
             />
 
           ))}

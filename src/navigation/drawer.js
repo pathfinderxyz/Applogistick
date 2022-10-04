@@ -29,6 +29,7 @@ import Estado from '../screens/Cuenta/Estado';
 import Detalless from '../screens/detalles2';
 import { AuthContext } from '../context/AuthContext';
 import PromoAnuncio from '../screens/promoanuncio';
+import EditarAnuncios from '../screens/editaranuncios';
 
 
 const Drawer = createDrawerNavigator();
@@ -248,6 +249,14 @@ export default function MyDrawer() {
         options={{
           headerShown: true,
           title: 'Registro Exitoso',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="EditarAnuncio" component={EditarAnuncios}
+        options={{
+          headerShown: true,
+          title: 'Editar Anuncio',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
