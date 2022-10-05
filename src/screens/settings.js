@@ -21,9 +21,13 @@ const Config = ({navigation, route}) => {
   const [gamesTab, setGamesTab] = useState(1);
   const [data, setData] = useState([]);
 
+  const [cargando, setCargando] = useState(true);
+
   const peticionGet = async () => {
-    await axios.get(url + "/" + idusuario).then(response => {
+      setCargando(true);
+      await axios.get(url + "/" + idusuario).then(response => {
       setData(response.data);
+      setCargando(false);
     
     })
   }
@@ -63,7 +67,20 @@ const Config = ({navigation, route}) => {
         </TouchableOpacity>
       </View>
     <View style={{flex:1,alignItems:'center',marginTop:20}}>
-      {gamesTab == 1 &&
+
+    {cargando ===true ? 
+          <Text
+          style={{
+            fontSize: 18,
+            color: "#000",
+            padding: 14,
+            textAlign:"center"
+          }}
+        >
+         Cargando...
+        </Text>
+        :
+      gamesTab == 1 &&
         data.sort((a, b) => b.id - a.id).map(item => (
             <ListItem
               key={item.id}

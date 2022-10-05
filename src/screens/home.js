@@ -20,6 +20,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SelectList from "react-native-dropdown-select-list";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 /* const NavigatetoDetails = props => {
   props.navigation.navigate('GameDetails');
@@ -57,10 +58,15 @@ const Home = ({ navigation }) => {
   const [selectedPais, setSelectedPais] = useState("");
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [cargando, setCargando] = useState(true);
+
+  console.log(data);
 
   const peticionGet = async () => {
-    await axios.get(url).then((response) => {
+    setCargando(true);
+      await axios.get(url).then((response) => {
       setData(response.data);
+      setCargando(false);
     
     });
   };
@@ -69,6 +75,7 @@ const Home = ({ navigation }) => {
       console.log(selectedCat);
       console.log(selectedPais);
       axios.post(urlfiltro, {selectedCat,selectedPais }).then((res) => {
+
         setData(res.data);
         
         setModalVisible(false);
@@ -164,8 +171,19 @@ const Home = ({ navigation }) => {
           />
         </TouchableOpacity>
         </View>
-
-        {gamesTab == 1 &&
+        {cargando ===true ? 
+          <Text
+          style={{
+            fontSize: 18,
+            color: "#fff",
+            padding: 14,
+            textAlign:"center"
+          }}
+        >
+         Cargando...
+        </Text>
+        :
+        gamesTab == 1 &&
           data
             .sort((a, b) => b.id - a.id)
             .map((item) => (
@@ -187,7 +205,8 @@ const Home = ({ navigation }) => {
                   })
                 }
               />
-            ))}
+            ))
+            }
       </ScrollView>
 
       <View style={styles.centeredView}>
